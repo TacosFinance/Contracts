@@ -1,4 +1,4 @@
-## Tacos.finance Contracts
+## Tacos.finance Contracts 🌮
 PickleToken:
 
 Timelock (48 hours):
