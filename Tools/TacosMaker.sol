@@ -8,17 +8,17 @@ import "./uniswapv2/interfaces/IUniswapV2Pair.sol";
 import "./uniswapv2/interfaces/IUniswapV2Factory.sol";
 
 
-contract PickleMaker {
+contract TacosMaker {
     using SafeMath for uint256;
 
     IUniswapV2Factory public factory;
     address public bar;
-    address public pickle;
+    address public tacos;
     address public weth;
 
-    constructor(IUniswapV2Factory _factory, address _bar, address _pickle, address _weth) public {
+    constructor(IUniswapV2Factory _factory, address _bar, address _tacos, address _weth) public {
         factory = _factory;
-        pickle = _pickle;
+        tacos = _tacos;
         bar = _bar;
         weth = _weth;
     }
@@ -30,18 +30,18 @@ contract PickleMaker {
         pair.transfer(address(pair), pair.balanceOf(address(this)));
         pair.burn(address(this));
         uint256 wethAmount = _toWETH(token0) + _toWETH(token1);
-        _toPICKLE(wethAmount);
+        _toTACOS(wethAmount);
     }
 
     function _toWETH(address token) internal returns (uint256) {
-        if (token == pickle) {
+        if (token == tacos) {
             uint amount = IERC20(token).balanceOf(address(this));
             IERC20(token).transfer(bar, amount);
             return 0;
         }
         if (token == weth) {
             uint amount = IERC20(token).balanceOf(address(this));
-            IERC20(token).transfer(factory.getPair(weth, pickle), amount);
+            IERC20(token).transfer(factory.getPair(weth, tacos), amount);
             return amount;
         }
         IUniswapV2Pair pair = IUniswapV2Pair(factory.getPair(token, weth));
@@ -58,12 +58,12 @@ contract PickleMaker {
         uint amountOut = numerator / denominator;
         (uint amount0Out, uint amount1Out) = token0 == token ? (uint(0), amountOut) : (amountOut, uint(0));
         IERC20(token).transfer(address(pair), amountIn);
-        pair.swap(amount0Out, amount1Out, factory.getPair(weth, pickle), new bytes(0));
+        pair.swap(amount0Out, amount1Out, factory.getPair(weth, tacos), new bytes(0));
         return amountOut;
     }
 
-    function _toPICKLE(uint256 amountIn) internal {
-        IUniswapV2Pair pair = IUniswapV2Pair(factory.getPair(weth, pickle));
+    function _toTACOS(uint256 amountIn) internal {
+        IUniswapV2Pair pair = IUniswapV2Pair(factory.getPair(weth, tacos));
         (uint reserve0, uint reserve1,) = pair.getReserves();
         address token0 = pair.token0();
         (uint reserveIn, uint reserveOut) = token0 == weth ? (reserve0, reserve1) : (reserve1, reserve0);
