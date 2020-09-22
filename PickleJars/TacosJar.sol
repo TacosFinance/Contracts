@@ -1,4 +1,4 @@
-// hevm: flattened sources of src/pickle-jar.sol
+// hevm: flattened sources of src/tacos-jar.sol
 pragma solidity >=0.4.23 >=0.6.0 <0.7.0 >=0.6.2 <0.7.0 >=0.6.7 <0.7.0;
 
 ////// src/interfaces/controller.sol
@@ -797,7 +797,7 @@ library SafeERC20 {
         }
     }
 }
-////// src/pickle-jar.sol
+////// src/tacos-jar.sol
 // https://github.com/iearn-finance/vaults/blob/master/contracts/vaults/yVault.sol
 
 /* pragma solidity ^0.6.7; */
@@ -807,7 +807,7 @@ library SafeERC20 {
 /* import "./lib/erc20.sol"; */
 /* import "./lib/safe-math.sol"; */
 
-contract PickleJar is ERC20 {
+contract TacosJar is ERC20 {
     using SafeERC20 for IERC20;
     using Address for address;
     using SafeMath for uint256;
