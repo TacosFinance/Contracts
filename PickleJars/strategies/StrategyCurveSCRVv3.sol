@@ -1192,8 +1192,8 @@ contract StrategyCurveSCRVv3 {
     address public constant usdt = 0xdAC17F958D2ee523a2206206994597C13D831ec7;
     address public constant susd = 0x57Ab1ec28D129707052df4dF418D58a2D46d5f51;
 
-    // pickle token
-    address public constant pickle = 0x429881672B9AE42b8EbA0E26cD9C73711b891Ca5;
+    // tacos token
+    address public constant tacos = 0x429881672B9AE42b8EbA0E26cD9C73711b891Ca5;
 
     // weth (for uniswapv2 xfers)
     address public constant weth = 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2;
@@ -1210,7 +1210,7 @@ contract StrategyCurveSCRVv3 {
 
     // Fees ~4.93% in total
     // - 2.94%  performance fee
-    // - 1.5%   used to burn pickles
+    // - 1.5%   used to burn tacos
     // - 0.5%   gas compensation fee (for caller)
 
     // 3% of 98% = 2.94% of original 100%
@@ -1493,12 +1493,12 @@ contract StrategyCurveSCRVv3 {
             uint256 _callerFee = _to.mul(callerFee).div(callerMax);
             IERC20(to).safeTransfer(msg.sender, _callerFee);
 
-            // 1.5% used to buy and BURN pickles
+            // 1.5% used to buy and BURN tacos
             uint256 _burnFee = _to.mul(burnFee).div(burnMax);
-            _swap(to, pickle, _burnFee);
-            IERC20(pickle).transfer(
+            _swap(to, tacos, _burnFee);
+            IERC20(tacos).transfer(
                 burn,
-                IERC20(pickle).balanceOf(address(this))
+                IERC20(tacos).balanceOf(address(this))
             );
 
             // Supply to curve to get sCRV
