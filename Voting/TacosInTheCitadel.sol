@@ -39,8 +39,8 @@ interface MasterChef {
         returns (uint256, uint256);
 }
 
-contract PickleVoteProxy {
-    // ETH/PICKLE token
+contract TacosVoteProxy {
+    // ETH/TACOS token
     IERC20 public constant votes = IERC20(
         0xdc98556Ce24f007A5eF6dC1CE96322d65832A819
     );
@@ -50,7 +50,7 @@ contract PickleVoteProxy {
         0xbD17B1ce622d73bD438b9E658acA5996dc394b0d
     );
 
-    // Pool 0 is the ETH/PICKLE pool
+    // Pool 0 is the ETH/TACOS pool
     uint256 public constant pool = uint256(0);
 
     // Using 9 decimals as we're square rooting the votes
@@ -59,11 +59,11 @@ contract PickleVoteProxy {
     }
 
     function name() external pure returns (string memory) {
-        return "PICKLEs In The Citadel";
+        return "TACOs In The Citadel";
     }
 
     function symbol() external pure returns (string memory) {
-        return "PICKLE C";
+        return "TACOS C";
     }
 
     function totalSupply() external view returns (uint256) {
