@@ -1238,7 +1238,7 @@ contract ControllerV2 is ReentrancyGuard {
         // Note: This assumes that no single person is responsible
         //       for 100% of the liquidity.
         // If this a single person is 100% responsible for the liquidity
-        // we can simply set min = max in pickle-jars
+        // we can simply set min = max in tacos-jars
         if (IStrategy(_fromStrategy).balanceOf() < _fromTokenAmount) {
             IJar(_fromJar).earn();
         }
@@ -1256,12 +1256,12 @@ contract ControllerV2 is ReentrancyGuard {
             _fromTokenAmount
         );
 
-        // 5. Deposits into PickleJar
+        // 5. Deposits into TacosJar
         uint256 _toTokenAmount = IERC20(_toToken).balanceOf(address(this));
         IERC20(_toToken).approve(_toJar, _toTokenAmount);
         IJar(_toJar).deposit(_toTokenAmount);
 
-        // 6. Sends msg.sender all the pickle jar tokens
+        // 6. Sends msg.sender all the tacos jar tokens
         uint256 _retPAmount = IJar(_toJar).balanceOf(address(this));
         IJar(_toJar).transfer(
             msg.sender,
