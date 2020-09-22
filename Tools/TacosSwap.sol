@@ -132,7 +132,7 @@ interface IUniswapV2Router2 {
     function WETH() external pure returns (address);
 }
 
-// File: contracts/PickleJar.sol
+// File: contracts/TacosJar.sol
 
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.6.12;
@@ -140,10 +140,10 @@ pragma solidity ^0.6.12;
 
 
 
-// PickleJAR contract helps you swap your UNIV2 LP tokens around,
+// TacosJAR contract helps you swap your UNIV2 LP tokens around,
 // using uniswap's permit functionality, so only 1 tx is needed
 // e.g. from ETH/USDC LP tokens to ETH/USDT LP tokens
-contract PickleJar {
+contract TacosJar {
     IUniswapV2Router2 router = IUniswapV2Router2(
         0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D
     );
