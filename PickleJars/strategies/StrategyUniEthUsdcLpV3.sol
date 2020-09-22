@@ -1153,8 +1153,8 @@ contract StrategyUniEthUsdcLpV3 {
     // stablecoins
     address public constant usdc = 0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48;
 
-    // pickle token
-    address public constant pickle = 0x429881672B9AE42b8EbA0E26cD9C73711b891Ca5;
+    // tacos token
+    address public constant tacos = 0x429881672B9AE42b8EbA0E26cD9C73711b891Ca5;
 
     // weth
     address public constant weth = 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2;
@@ -1171,7 +1171,7 @@ contract StrategyUniEthUsdcLpV3 {
 
     // Fees ~4.5% in total
     // - 3%  performance fee
-    // - 1.5%   used to burn pickles
+    // - 1.5%   used to burn tacos
 
     // 3% of 98% = 2.94% of original 100%
     uint256 public performanceFee = 300;
@@ -1357,12 +1357,12 @@ contract StrategyUniEthUsdcLpV3 {
         // Swap half WETH for USDC
         uint256 _weth = IERC20(weth).balanceOf(address(this));
         if (_weth > 0) {
-            // Burn some pickles first
+            // Burn some tacos first
             uint256 _burnFee = _weth.mul(burnFee).div(burnMax);
-            _swap(weth, pickle, _burnFee);
-            IERC20(pickle).transfer(
+            _swap(weth, tacos, _burnFee);
+            IERC20(tacos).transfer(
                 burn,
-                IERC20(pickle).balanceOf(address(this))
+                IERC20(tacos).balanceOf(address(this))
             );
 
             _weth = _weth.sub(_burnFee);
