@@ -144,7 +144,7 @@ interface IUniswapV2Factory {
     function getPair(address tokenA, address tokenB) external view returns (address pair);
 }
 
-// File: contracts/PickleMigrator.sol
+// File: contracts/TacosMigrator.sol
 
 
 pragma solidity ^0.6.12;
@@ -153,8 +153,8 @@ pragma solidity ^0.6.12;
 
 
 
-// Migrate from SUSHISWAP to UNISWAP for the PICKLES
-contract PickleMigrator {
+// Migrate from SUSHISWAP to UNISWAP for the TACOS
+contract TacosMigrator {
     IUniswapV2Factory factory = IUniswapV2Factory(
         0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f
     );
